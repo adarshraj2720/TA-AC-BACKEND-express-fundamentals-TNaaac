@@ -16,14 +16,20 @@ app.use(cookieParser())
 
 app.use(express.json())
 
+
 app.use((req,res,next)=>{
+    console.log(req.cookies);
+    next();
+})
+
+app.use('/about',(req,res,next)=>{
     console.log(req.cookies)
     res.cookie("username","Adarsh");
-    next();
+    res.end('Index Page');
     
 })
 
-app.get('/about',(req,res)=>{
+app.get('/',(req,res)=>{
     res.sendFile(__dirname + '/index.html')
     //res.send()
 })
