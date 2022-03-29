@@ -44,6 +44,9 @@ app.get('/users/:username',(req,res)=>{
 app.use((req,res,next)=>{
     res.send('page not found 400');
 })
+app.use((err,req,res,next)=>{
+    res.send(err);
+})
 
 app.listen(3000,()=>{
     console.log('WELCOME in the 3k server')
